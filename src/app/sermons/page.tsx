@@ -28,6 +28,17 @@ export default async function SermonsLibraryPage({
   }>
 }) {
   const { q, speaker, series, topic, sort = 'newest' } = await searchParams
+
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    return (
+      <PublicShell>
+        <div className="container px-4 py-10">
+          <p className="text-muted-foreground text-center">Sermons will appear here.</p>
+        </div>
+      </PublicShell>
+    )
+  }
+
   const supabase = createPublicClient()
 
   // Fetch filter options

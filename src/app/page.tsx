@@ -11,6 +11,16 @@ import type { Sermon } from '@/lib/types'
 export const revalidate = 300
 
 export default async function HomePage() {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    return (
+      <>
+        <Header />
+        <HeroSection />
+        <Footer />
+      </>
+    )
+  }
+
   const supabase = createPublicClient()
 
   const [weeklyRes, sermonsRes, pathsRes] = await Promise.all([
