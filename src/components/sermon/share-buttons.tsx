@@ -126,7 +126,7 @@ export function ShareButtons({ url, title, variant = 'outline', size = 'sm', sho
             )}
             Copy link
           </DropdownMenuItem>
-          {typeof navigator.share === 'function' && (
+          {typeof navigator !== 'undefined' && typeof navigator.share === 'function' && (
             <DropdownMenuItem onClick={handleNativeShare}>
               <Share2 className="mr-2 h-4 w-4" />
               Share...
