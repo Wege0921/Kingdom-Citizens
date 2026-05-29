@@ -6,5 +6,3 @@ dockerfilePath = "Dockerfile"
 startCommand = "NODE_ENV=production node server.js"
 healthcheckPath = "/"
 healthcheckTimeout = 300
-restartPolicyType = "on-failure"
-numReplicas = 1
