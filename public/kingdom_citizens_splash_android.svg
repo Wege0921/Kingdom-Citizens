@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <title>Kingdom Citizens Android Splash Screen</title>
+  <desc>Android splash screen with crown, cross, and tagline</desc>
+
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="#4B2DA0"/>
+
+  <!-- Subtle background cross pattern -->
+  <rect x="526" y="200" width="28" height="1520" rx="6" fill="#5535B0" opacity="0.4"/>
+  <rect x="200" y="746" width="680" height="28" rx="6" fill="#5535B0" opacity="0.4"/>
+
+  <!-- Crown -->
+  <g transform="translate(540, 720)">
+    <path d="M-160 100 L-160 0 L-90 50 L0 -60 L90 50 L160 0 L160 100 Z" fill="#F0C040"/>
+    <rect x="-160" y="88" width="320" height="32" rx="6" fill="#F0C040"/>
+    <circle cx="-160" cy="0" r="18" fill="white"/>
+    <circle cx="0" cy="-60" r="22" fill="white"/>
+    <circle cx="160" cy="0" r="18" fill="white"/>
+  </g>
+
+  <!-- Cross -->
+  <rect x="500" y="860" width="80" height="200" rx="12" fill="#F0C040"/>
+  <rect x="390" y="920" width="300" height="80" rx="12" fill="#F0C040"/>
+
+  <!-- App name -->
+  <text x="540" y="1160" text-anchor="middle" font-family="Georgia, serif" font-size="90" font-weight="700" fill="white" letter-spacing="4">KINGDOM</text>
+  <text x="540" y="1260" text-anchor="middle" font-family="Georgia, serif" font-size="60" font-weight="400" fill="#C9A8FF" letter-spacing="16">CITIZENS</text>
+
+  <!-- Gold divider -->
+  <rect x="340" y="1290" width="400" height="3" rx="2" fill="#F0C040"/>
+  <circle cx="540" cy="1291" r="6" fill="#F0C040"/>
+
+  <!-- Tagline -->
+  <text x="540" y="1350" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#D4BAFF" letter-spacing="3">CITIZENS OF A HIGHER KINGDOM</text>
+
+</svg>

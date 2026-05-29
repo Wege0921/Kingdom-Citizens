@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 300" width="380" height="300">
+  <title>Kingdom Citizens Logo</title>
+  <desc>Crown above a cross with Kingdom Citizens wordmark</desc>
+
+  <!-- Crown -->
+  <g transform="translate(190, 55)">
+    <path d="M-60 36 L-60 0 L-34 18 L0 -18 L34 18 L60 0 L60 36 Z" fill="#4B2DA0"/>
+    <rect x="-60" y="32" width="120" height="12" rx="3" fill="#4B2DA0"/>
+    <circle cx="-60" cy="0" r="6" fill="#F0C040"/>
+    <circle cx="0" cy="-18" r="7" fill="#F0C040"/>
+    <circle cx="60" cy="0" r="6" fill="#F0C040"/>
+  </g>
+
+  <!-- Cross -->
+  <rect x="182" y="118" width="16" height="72" rx="4" fill="#4B2DA0"/>
+  <rect x="160" y="138" width="60" height="16" rx="4" fill="#4B2DA0"/>
+
+  <!-- Wordmark -->
+  <text x="190" y="220" text-anchor="middle" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#4B2DA0" letter-spacing="2">Kingdom</text>
+  <text x="190" y="256" text-anchor="middle" font-family="Georgia, serif" font-size="19" font-weight="400" fill="#7B5DC0" letter-spacing="8">Citizens</text>
+
+  <!-- Gold rule -->
+  <rect x="132" y="268" width="116" height="2" rx="1" fill="#F0C040"/>
+</svg>

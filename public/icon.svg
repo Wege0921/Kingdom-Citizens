@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  <title>Kingdom Citizens PWA Icon</title>
+  <desc>Crown and cross on purple rounded square background</desc>
+
+  <!-- Rounded square background -->
+  <rect x="0" y="0" width="160" height="160" rx="32" fill="#4B2DA0"/>
+
+  <!-- Crown -->
+  <g transform="translate(80, 50)">
+    <path d="M-42 26 L-42 -2 L-23 12 L0 -14 L23 12 L42 -2 L42 26 Z" fill="#F0C040"/>
+    <rect x="-42" y="22" width="84" height="9" rx="2" fill="#F0C040"/>
+    <circle cx="-42" cy="-2" r="4" fill="white"/>
+    <circle cx="0" cy="-14" r="5" fill="white"/>
+    <circle cx="42" cy="-2" r="4" fill="white"/>
+  </g>
+
+  <!-- Cross -->
+  <rect x="74" y="86" width="12" height="52" rx="3" fill="#F0C040"/>
+  <rect x="56" y="102" width="48" height="12" rx="3" fill="#F0C040"/>
+</svg>

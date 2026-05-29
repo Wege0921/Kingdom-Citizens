@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1170 2532" width="1170" height="2532">
+  <title>Kingdom Citizens iPhone Splash Screen</title>
+  <desc>iPhone splash screen with crown, cross, and tagline</desc>
+
+  <!-- Background -->
+  <rect width="1170" height="2532" fill="#4B2DA0"/>
+
+  <!-- Subtle background cross pattern -->
+  <rect x="571" y="200" width="28" height="2132" rx="6" fill="#5535B0" opacity="0.4"/>
+  <rect x="200" y="1052" width="770" height="28" rx="6" fill="#5535B0" opacity="0.4"/>
+
+  <!-- Crown -->
+  <g transform="translate(585, 980)">
+    <path d="M-160 100 L-160 0 L-90 50 L0 -60 L90 50 L160 0 L160 100 Z" fill="#F0C040"/>
+    <rect x="-160" y="88" width="320" height="32" rx="6" fill="#F0C040"/>
+    <circle cx="-160" cy="0" r="18" fill="white"/>
+    <circle cx="0" cy="-60" r="22" fill="white"/>
+    <circle cx="160" cy="0" r="18" fill="white"/>
+  </g>
+
+  <!-- Cross -->
+  <rect x="545" y="1120" width="80" height="200" rx="12" fill="#F0C040"/>
+  <rect x="435" y="1180" width="300" height="80" rx="12" fill="#F0C040"/>
+
+  <!-- App name -->
+  <text x="585" y="1440" text-anchor="middle" font-family="Georgia, serif" font-size="100" font-weight="700" fill="white" letter-spacing="4">KINGDOM</text>
+  <text x="585" y="1548" text-anchor="middle" font-family="Georgia, serif" font-size="64" font-weight="400" fill="#C9A8FF" letter-spacing="18">CITIZENS</text>
+
+  <!-- Gold divider -->
+  <rect x="360" y="1580" width="450" height="3" rx="2" fill="#F0C040"/>
+  <circle cx="585" cy="1581" r="7" fill="#F0C040"/>
+
+  <!-- Tagline -->
+  <text x="585" y="1645" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#D4BAFF" letter-spacing="3">CITIZENS OF A HIGHER KINGDOM</text>
+
+</svg>
