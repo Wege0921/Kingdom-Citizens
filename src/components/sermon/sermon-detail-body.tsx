@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
+import { SafeHTML } from '@/components/ui/safe-html'
 import type { Sermon, ScriptureReference } from '@/lib/types'
 import { format } from 'date-fns/format'
 import { BookOpen, Calendar, Download, ExternalLink } from 'lucide-react'
@@ -82,11 +83,6 @@ export function SermonDetailBody({
       ? sermon.memory_verse_am
       : sermon.memory_verse_en
 
-  const plainSummary = (displaySummary ?? '')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&amp;/g, '&')
-    .replace(/<[^>]+>/g, '')
   const fullUrl = pageUrl.startsWith('http') ? pageUrl : `https://kingdom-learning.vercel.app${pageUrl}`
 
   return (
@@ -140,7 +136,11 @@ export function SermonDetailBody({
 
       <section className="max-w-none">
         <h2 className="text-xl font-semibold mb-4"><T k="admin.summary" /></h2>
-        <p className="whitespace-pre-wrap text-muted-foreground">{plainSummary || <T k="common.noResults" />}</p>
+        {displaySummary ? (
+          <SafeHTML html={displaySummary} className="sermon-content" />
+        ) : (
+          <p className="text-muted-foreground"><T k="common.noResults" /></p>
+        )}
       </section>
 
       <ScriptureList refs={scriptureRefs} />

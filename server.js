@@ -5,6 +5,7 @@ const { parse } = require('url')
 const next = require('next')
 const { Server } = require('socket.io')
 const { createClient } = require('@supabase/supabase-js')
+const ws = require('ws')
 
 const dev = process.env.NODE_ENV !== 'production'
 const hostname = 'localhost'
@@ -15,10 +16,28 @@ const handle = app.getRequestHandler()
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
+  process.env.SUPABASE_SERVICE_ROLE_KEY,
+  {
+    realtime: { transport: ws },
+  }
 )
 
+process.on('uncaughtException', (err) => {
+  console.error('UNCAUGHT EXCEPTION:', err);
+  process.exit(1);
+});
+process.on('unhandledRejection', (reason) => {
+  console.error('UNHANDLED REJECTION:', reason);
+});
+
+console.log('Starting server setup...');
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('PORT:', process.env.PORT);
+console.log('NEXT_PUBLIC_SUPABASE_URL:', process.env.NEXT_PUBLIC_SUPABASE_URL ? 'set' : 'NOT SET');
+
 app.prepare().then(() => {
+  console.log('Next.js app prepared, creating HTTP server...');
+  console.log('.next exists:', require('fs').existsSync('.next'));
   const httpServer = createServer(async (req, res) => {
     try {
       const parsedUrl = parse(req.url, true)
@@ -226,4 +245,8 @@ app.prepare().then(() => {
       console.log(`> Ready on http://${hostname}:${port}`)
       console.log(`> Socket.IO running on /api/socket`)
     })
-})
+}).catch((err) => {
+  console.error('FAILED to prepare Next.js app:', err);
+  console.error('Stack:', err.stack);
+  process.exit(1);
+});

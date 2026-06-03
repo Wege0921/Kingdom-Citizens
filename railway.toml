@@ -1,8 +1,0 @@
-[build]
-builder = "DOCKERFILE"
-dockerfilePath = "Dockerfile"
-
-[deploy]
-startCommand = "NODE_ENV=production node server.js"
-healthcheckPath = "/"
-healthcheckTimeout = 300

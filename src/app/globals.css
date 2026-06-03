@@ -235,3 +235,68 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-muted-foreground;
 }
+
+/* Sermon rich content — mirrors Tiptap editor output */
+.sermon-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.sermon-content h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.sermon-content p {
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+}
+
+.sermon-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.sermon-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.sermon-content li {
+  margin-bottom: 0.375rem;
+  line-height: 1.7;
+}
+
+.sermon-content blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: oklch(0.45 0.02 45);
+}
+
+.sermon-content strong {
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.sermon-content em {
+  font-style: italic;
+}
+
+.sermon-content a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.sermon-content a:hover {
+  opacity: 0.8;
+}
