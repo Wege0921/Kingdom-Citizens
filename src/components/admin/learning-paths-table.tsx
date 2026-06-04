@@ -56,6 +56,11 @@ export function LearningPathsTable({ paths: initial }: { paths: LearningPath[] }
     } else {
       setPaths(paths.filter((p) => p.id !== deleteId))
       toast({ title: t('admin.pathDeleted') })
+      await fetch('/api/revalidate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ paths: ['/', '/learn'] }),
+      })
       router.refresh()
     }
     setDeleting(false)

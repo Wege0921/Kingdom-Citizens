@@ -108,6 +108,11 @@ export function LearningModulesManager({
       })
       setShowForm(false)
       toast({ title: t('admin.moduleAdded') })
+      await fetch('/api/revalidate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ paths: ['/learn', `/learn/${pathId}`] }),
+      })
       router.refresh()
     }
   }
@@ -121,6 +126,11 @@ export function LearningModulesManager({
     } else {
       setModules(modules.filter((m) => m.id !== deleteId))
       toast({ title: t('admin.moduleDeleted') })
+      await fetch('/api/revalidate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ paths: ['/learn', `/learn/${pathId}`] }),
+      })
       router.refresh()
     }
     setDeleting(false)

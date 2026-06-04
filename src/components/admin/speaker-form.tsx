@@ -59,6 +59,11 @@ export function SpeakerForm({ speaker }: { speaker?: Speaker }) {
         const { error } = await supabase.from('speakers').update(payload).eq('id', speaker.id)
         if (error) throw error
         toast({ title: t('admin.speakerUpdated') })
+        await fetch('/api/revalidate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ paths: ['/', '/sermons'] }),
+        })
       } else {
         const { data, error } = await supabase
           .from('speakers')
@@ -67,6 +72,11 @@ export function SpeakerForm({ speaker }: { speaker?: Speaker }) {
           .single()
         if (error) throw error
         toast({ title: t('admin.speakerCreated') })
+        await fetch('/api/revalidate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ paths: ['/', '/sermons'] }),
+        })
         router.push(`/admin/speakers/${data?.id}`)
       }
       router.refresh()

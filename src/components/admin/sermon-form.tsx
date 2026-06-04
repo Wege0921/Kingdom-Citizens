@@ -337,6 +337,11 @@ export function SermonForm({
         }
 
         toast({ title: t('admin.sermonUpdated') })
+        await fetch('/api/revalidate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ paths: ['/', '/sermons'] }),
+        })
       } else {
         const insertRow = {
           ...payload,
@@ -355,6 +360,11 @@ export function SermonForm({
           }
         }
         toast({ title: t('admin.sermonCreated') })
+        await fetch('/api/revalidate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ paths: ['/', '/sermons'] }),
+        })
         router.push(`/admin/sermons/${data?.id}`)
         router.refresh()
         setSaving(false)

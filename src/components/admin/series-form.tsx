@@ -61,6 +61,11 @@ export function SeriesForm({ series }: { series?: Series }) {
         const { error } = await supabase.from('series').update(payload).eq('id', series.id)
         if (error) throw error
         toast({ title: t('admin.seriesUpdated') })
+        await fetch('/api/revalidate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ paths: ['/', '/sermons'] }),
+        })
       } else {
         const { data, error } = await supabase
           .from('series')
@@ -69,6 +74,11 @@ export function SeriesForm({ series }: { series?: Series }) {
           .single()
         if (error) throw error
         toast({ title: t('admin.seriesCreated') })
+        await fetch('/api/revalidate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ paths: ['/', '/sermons'] }),
+        })
         router.push(`/admin/series/${data?.id}`)
       }
       router.refresh()

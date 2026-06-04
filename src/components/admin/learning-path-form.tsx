@@ -78,6 +78,11 @@ export function LearningPathForm({ path }: { path?: LearningPath }) {
         const { error } = await supabase.from('learning_paths').update(payload).eq('id', path.id)
         if (error) throw error
         toast({ title: t('admin.pathUpdated') })
+        await fetch('/api/revalidate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ paths: ['/', '/learn'] }),
+        })
       } else {
         const { data, error } = await supabase
           .from('learning_paths')
@@ -90,6 +95,11 @@ export function LearningPathForm({ path }: { path?: LearningPath }) {
           .single()
         if (error) throw error
         toast({ title: t('admin.pathCreated') })
+        await fetch('/api/revalidate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ paths: ['/', '/learn'] }),
+        })
         router.push(`/admin/learning/${data?.id}`)
       }
       router.refresh()

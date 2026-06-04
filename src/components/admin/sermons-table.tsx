@@ -78,6 +78,11 @@ export function SermonsTable({ sermons: initialSermons }: SermonsTableProps) {
         title: t('common.success'),
         description: t('common.delete'),
       })
+      await fetch('/api/revalidate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ paths: ['/', '/sermons'] }),
+      })
     }
     
     setIsDeleting(false)
@@ -112,6 +117,11 @@ export function SermonsTable({ sermons: initialSermons }: SermonsTableProps) {
       toast({
         title: t('common.success'),
         description: `${t('admin.sermons')} ${!sermon.is_published ? t('admin.publish') : t('admin.unpublish')}`,
+      })
+      await fetch('/api/revalidate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ paths: ['/', '/sermons'] }),
       })
     }
   }

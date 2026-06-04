@@ -59,6 +59,11 @@ export function TopicsTable({ topics: initial }: { topics: Topic[] }) {
     } else {
       setTopics(topics.filter((t) => t.id !== deleteId))
       toast({ title: t('common.delete') })
+      await fetch('/api/revalidate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ paths: ['/', '/sermons'] }),
+      })
       router.refresh()
     }
     setDeleting(false)

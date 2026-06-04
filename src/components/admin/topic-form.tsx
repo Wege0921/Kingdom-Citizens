@@ -48,6 +48,11 @@ export function TopicForm({ topic }: { topic?: Topic }) {
         const { error } = await supabase.from('topics').update(payload).eq('id', topic.id)
         if (error) throw error
         toast({ title: t('admin.topicUpdated') })
+        await fetch('/api/revalidate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ paths: ['/', '/sermons'] }),
+        })
       } else {
         const { data, error } = await supabase
           .from('topics')
@@ -56,6 +61,11 @@ export function TopicForm({ topic }: { topic?: Topic }) {
           .single()
         if (error) throw error
         toast({ title: t('admin.topicCreated') })
+        await fetch('/api/revalidate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ paths: ['/', '/sermons'] }),
+        })
         router.push(`/admin/topics/${data?.id}`)
       }
       router.refresh()
