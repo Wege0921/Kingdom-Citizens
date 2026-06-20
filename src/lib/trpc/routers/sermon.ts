@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { revalidatePath } from 'next/cache'
 import { router, publicProcedure, protectedProcedure, adminProcedure } from '../init'
 
 export const sermonRouter = router({
@@ -149,6 +150,13 @@ export const sermonRouter = router({
         },
       })
 
+      // Revalidate list pages so new sermons appear immediately
+      if (data.isPublished) {
+        revalidatePath(`/sermons/${sermon.id}`)
+      }
+      revalidatePath('/sermons')
+      revalidatePath('/')
+
       return sermon
     }),
 
@@ -220,6 +228,11 @@ export const sermonRouter = router({
         },
       })
 
+      // Revalidate sermon pages so changes are visible immediately
+      revalidatePath(`/sermons/${id}`)
+      revalidatePath('/sermons')
+      revalidatePath('/')
+
       return sermon
     }),
 
@@ -227,7 +240,13 @@ export const sermonRouter = router({
   delete: adminProcedure
     .input(z.object({ id: z.string().uuid() }))
     .mutation(async ({ ctx, input }) => {
-      await ctx.prisma.sermon.delete({ where: { id: input.id } })
+      const { id } = input
+      await ctx.prisma.sermon.delete({ where: { id } })
+
+      revalidatePath(`/sermons/${id}`)
+      revalidatePath('/sermons')
+      revalidatePath('/')
+
       return { success: true }
     }),
 
